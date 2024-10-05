@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Directive</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+  </head>
+  <body>
+    <section id="app" v-cloak>
+        <h1>{{name}}</h1>
+        <div v-html="htmlTag"></div>
+    </section>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+            name:"directive",
+            htmlTag:"<h1 style='color:red;'>This is v-html tag </h1>"
+        };
+      },
+    }).mount("#app");
+  </script>
+</html>

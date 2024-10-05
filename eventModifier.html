@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Modifiers</title>
+</head>
+<body>
+    <section id="app">
+        <h1>{{name}}</h1>
+        <form @submit.prevent="formHandeler">
+            <input type="text" name="name" value="">
+            <input type="password" name="password" value="">
+            <button>Submit</button>
+        </form>
+
+        <hr>
+        <input type="text" @keyup.ctrl.enter="info" v-model="text">
+    </section>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                name:"event modifiers",
+                text:""
+            }
+        },
+        methods: {
+            formHandeler(e){
+                // e.preventDefault();
+                console.log(e.target.password.value);
+                console.log(e.target.name.value);    
+            },
+            info(){
+               console.log(this.text);
+            }
+
+        },
+
+    }).mount("#app");
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layout </title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+
+
+<body>
+    <section id="sectionOne" v-cloak>
+        <h1>{{name.toUpperCase()}}</h1>
+        <h3>{{number}}</h3>
+        <div class="btn-group">
+            <button v-on:click="increase">Increase</button>
+            <button @click="decrease">Decrease</button>
+        </div>
+        <strong style="color: red;">{{show}}</strong>
+
+        <br><hr>
+        <h1>{{age}}</h1>
+        <button @click="age++">age ++</button>
+        <button @click="age--">age --</button>
+        <h3 v-if="age>=18">You are adult {{age}}</h3>
+        <h3 v-else-if="age<18">You are young {{age}}</h3>
+        <br><hr>    
+
+        <em>{{call(name)}}</em><br>
+        <em>{{call()}}</em>
+        <hr>
+
+        <p>{{test(this)}}</p>
+        <hr>
+
+        <button @click="target($event)">target</button>
+        <button @click="target(this)">target</button>
+        
+
+    </section>
+</body>
+
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script src="/app.js"></script>
+</html>

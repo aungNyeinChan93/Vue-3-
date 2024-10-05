@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3</title>
+  </head>
+  <body>
+    <div id="title">
+      <h1>{{name.toUpperCase()}}</h1>
+      <p>{{text}}</p>
+      <button :onclick="myAlert">Click</button>
+      <h3>{{callTilte()}}</h3>
+      <h1>{{parameter(name)}}</h1>
+    </div>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          name: "Vue 3",
+          text: "dflasdlflaskdlfkalsdfklasdkflaksdlfasd",
+        };
+      },
+      methods: {
+        myAlert() {
+          alert("hello Vue");
+        },
+        callTilte(){
+            return `${this.name} form callTitle method`;
+        },
+        parameter(text){
+            return `${text}  form parameter method`;
+        },
+
+      },
+    }).mount("#title");
+  </script>
+</html>
