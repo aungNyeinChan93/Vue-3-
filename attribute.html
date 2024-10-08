@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .green{
+            color: green;
+        }
+        .red{
+            color: red;
+        }
+        .gold{
+            color: gold;
+        }
+        .bold{
+            font-weight: bolder;
+            font-style: italic;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p :class="{green:greenstatus,red:redstatus,gold:goldStatus,bold:boldStatus}" >{{name}}</p>
+        <button @click="changeGreen">Change Green </button>
+        <button @click="redstatus = true,greenstatus = false">Change Red </button>
+        <button @click="goldStatus = !goldStatus">Change Gold on/off</button>
+        <button @click="boldStatus = !boldStatus">Bold</button>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                name:"Attribute Bind",
+                greenstatus:false,
+                redstatus:false,
+                goldStatus:false,
+                boldStatus:false,
+            }
+        },
+        methods: {
+            changeGreen(){
+                this.greenstatus =true;
+                this.redstatus = false;
+            }
+        },
+
+    }).mount("#app")
+</script>
+</html>

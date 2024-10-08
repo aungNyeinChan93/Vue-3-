@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computed Property</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <section id="app" v-cloak>
+        <h1>{{name}}</h1>
+        <p>{{aboutMe}}</p>
+        <strong>{{condation}} :: {{age}}</strong>
+    </section>
+</body>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+ <script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                name:"Computed Properties",
+                myName :'chan',
+                age:20,
+                gender:"male",
+                location:"ygn"
+            }
+        },
+        computed:{
+            aboutMe(){
+                return `My name is ${this.myName}. I am ${this.age} year old. I live in ${this.location}. Gender type is ${this.gender}`;
+            },
+            condation(){
+                return this.age >18 ? "your are adult": "you are young";
+            }
+        },
+        
+
+
+    }).mount("#app");
+ </script>
+</html>

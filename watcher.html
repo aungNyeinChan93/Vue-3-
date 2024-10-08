@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watcher</title>
+</head>
+<body>
+    <section id="watch">
+        <h1>{{name}}</h1>
+        <button @click="callName" disabled>Alert</button>
+
+        <input type="text" v-model="name">
+        <hr>
+        <div class="count">
+            {{count}}
+            <button @click="increase">Increase</button>
+        </div>
+    </section>
+</body>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                name:"",
+                count:0,
+            }
+        },
+        watch:{
+            name(newVal,oldVal){
+                if(newVal.includes("!")){
+                    this.callName();
+                }
+            },
+            count(newVal,oldVal){
+                console.log(` New Value - ${newVal} , old value - ${oldVal}`);
+                // document.write(` New Value - ${newVal} , old value - ${oldVal}`); 
+            }
+        },
+
+        methods:{
+            callName(){
+                alert(this.name)
+            },
+            increase(){
+                return this.count++;    
+            }
+        }
+        
+    }).mount("#watch");
+</script>
+</html>

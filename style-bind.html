@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Style binding</title>
+
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="app" v-cloak>
+      <h1>{{name.toUpperCase()}}</h1>
+      <br />
+      <hr />
+      <div class="container">
+        <p :style="myTag_style  ">{{text}}</p>
+        <input type="text" v-model="text" /><br />
+        <br />
+        <hr />
+        <h4>Font Color</h4>
+        <button @click="myColor = 'red'">Red</button>
+        <button @click="myColor = 'green'">Green</button>
+        <button @click="myColor = 'blue'">Blue</button>
+        <button @click="myColor = 'black'">Default</button>
+        <hr />
+        <h4>Font Size</h4>
+        <button @click="fontStyle = 'italic'">Italic</button>
+        <button @click="fontStyle = 'normal'">Normal</button>
+        <hr />
+        <h4>Font weight</h4>
+        <select v-model="fontWeight">
+          <option value="100">100</option>
+          <option value="200">200</option>
+          <option value="300">300</option>
+          <option value="400">400</option>
+          <option value="500">500</option>
+          <option value="600">600</option>
+          <option value="700">700</option>
+        </select>
+        <hr />
+        <h4>Font Size</h4>
+        <input type="range" v-model="fontSize" />
+        <hr />
+      </div>
+    </section>
+  </body>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          name: "style binding",
+          text: "This is something here!",
+          myColor: "black",
+          fontStyle: "normal",
+          fontWeight: "100",
+          fontSize: "16px",
+        };
+      },
+      computed: {
+        myTag_style() {
+          return {
+            color: this.myColor,
+            fontStyle: this.fontStyle,
+            fontWeight: this.fontWeight,
+            fontSize: this.fontSize + "px",
+          };
+        },
+      },
+    }).mount("#app");
+  </script>
+</html>
