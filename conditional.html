@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conditional</title>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="conditional" v-cloak>
+      <h1 v-if="status">{{name}}</h1>
+      <h1 v-else>{{sec}}</h1>
+      <button @click="status = !status">show</button>
+
+      <hr />
+
+      <p v-show="true">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia error
+        temporibus voluptas maxime officiis a inventore ut, reiciendis libero
+        distinctio fuga ducimus, ab tempora labore laboriosam veniam hic
+        voluptatum impedit!
+      </p>
+      <hr />
+
+      <template v-if="true">
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid
+          libero iure ad aliquam, cumque totam asperiores blanditiis molestiae
+          id quas omnis sit maxime iste consectetur inventore animi nobis enim.
+          Sapiente?
+        </p>
+      </template>
+      <hr>
+
+    </section>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          name: "conditional rendering",
+          sec: "v-else",
+          status: true,
+        };
+      },
+    })
+
+    app.mount("#conditional");
+  </script>
+</html>
